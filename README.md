@@ -4,7 +4,7 @@ SSH key manager, you can ssh into vm by storing in pulao and using it ,it is v c
 
 Bruh pulao works, nice
 
-## Usage:
+## Install:
   * Install Rust
     ```
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -17,7 +17,22 @@ Bruh pulao works, nice
     ```
     cargo install --path . 
     ```
-    
+
+## Usage:
+  * Add ssh
+    ```
+      pulao-cli add <ip> <name> <user>
+     ```
+   * List 
+     ```
+      pulao-cli list
+     ```
+   * Run
+    ```
+    pulao-cli run <name>
+    ```
+
+
     
 ## Issues
   There would be like 1000 issues , issok chill
