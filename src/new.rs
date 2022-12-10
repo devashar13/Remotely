@@ -1,4 +1,6 @@
 use clap::Parser;
+use rusqlite::{Connection, Result};
+
 // use rusqlite::Connection;
 
 /// Simple program to subtract numbers
@@ -15,7 +17,16 @@ struct Args {
     user: String,
 }
 
-pub fn add_ssh(ip: &String, name: &String, user: &String) {
-    let conn = Connection::open("pulao.db");
-    
+pub fn add_ssh(
+    ip: &String,
+    name: &String,
+    user: &String,
+) -> Result<(), Box<dyn std::error::Error>> {
+    let conn = Connection::open("pulao.db")?;
+    conn.execute(
+        "INSERT INTO pulao (ip,name,user) values (?1,?2,?3)",
+        [ip, name, user],
+    )?;
+
+    Ok(())
 }

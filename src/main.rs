@@ -18,6 +18,11 @@ enum Commands {
 
         user: String,
     },
+    List {},
+    Run {
+        /// Second number to add
+        name: String,
+    },
 }
 
 fn main() {
@@ -29,32 +34,31 @@ fn main() {
     // You can check for the existence of subcommands, and if found use their
     // matches just as you would the top level app
     match &value.command {
-        Commands::Add { ip, name, user } => new::add_ssh(ip, name, user), // Commands::Substract {
-                                                                          //     number_one,
-                                                                          //     number_two,
-                                                                          // } => {
-                                                                          //     println!(
-                                                                          //         "'myapp add' was used, name is: {:?}",
-                                                                          //         number_one - number_two
-                                                                          //     )
-                                                                          // }
-                                                                          // Commands::Multiply {
-                                                                          //     number_one,
-                                                                          //     number_two,
-                                                                          // } => {
-                                                                          //     println!(
-                                                                          //         "'myapp add' was used, name is: {:?}",
-                                                                          //         number_one * number_two
-                                                                          //     )
-                                                                          // }
-                                                                          // Commands::Divide {
-                                                                          //     number_one,
-                                                                          //     number_two,
-                                                                          // } => {
-                                                                          //     println!(
-                                                                          //         "'myapp add' was used, name is: {:?}",
-                                                                          //         number_one / number_two
-                                                                          //     )
-                                                                          // }
+        Commands::Add { ip, name, user } => {
+            if let Err(e) = new::add_ssh(ip, name, user) {
+                print!("error adding new key {}", e);
+                process::exit(1);
+            }
+        }
+        Commands::List {} => {
+            if let Err(e) = pulao_cli::list() {
+                print!("error listing {}", e);
+                process::exit(1);
+            }
+        }
+        Commands::Run { name } => {
+            if let Err(e) = pulao_cli::run(name) {
+                print!("error runnign {}", e);
+                process::exit(1);
+            }
+        } // Commands::Divide {
+          //     number_one,
+          //     number_two,
+          // } => {
+          //     println!(
+          //         "'myapp add' was used, name is: {:?}",
+          //         number_one / number_two
+          //     )
+          // }
     }
 }

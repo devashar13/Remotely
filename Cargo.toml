@@ -7,4 +7,6 @@ edition = "2021"
 
 [dependencies]
 rusqlite = "0.26.1"
+ssh2 = "*"
+subprocess = "0.2.9"
 clap = { version = "3.0.0-rc.8", features = ["derive"] }
