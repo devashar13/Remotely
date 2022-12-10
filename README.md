@@ -1,5 +1,5 @@
 # pulao-cli
-veg biryani. Rust implementation of Shaman by Arjun Somvanshi 
+SSH key manager, you can ssh into vm by storing in pulao and using it ,it is v cool. Rust implementation of Shaman by Arjun Somvanshi 
 
 
 Bruh pulao works, nice
