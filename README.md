@@ -1,5 +1,6 @@
 # Remotely
-SSH key manager, you can ssh into vm by storing in pulao and using it
+A tool for managing remote machines with ssh
+
 
 
 
